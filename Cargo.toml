@@ -1028,8 +1028,12 @@ zed_actions = { codegen-units = 1 }
 
 [profile.release]
 debug = "limited"
-lto = "thin"
-codegen-units = 1
+
+opt-level = 3          # 最强优化
+lto = "thin"           # ThinLTO
+codegen-units = 1      # 单 CGU，获取最优机器码
+panic = "abort"        # 立即 abort
+
 
 [profile.release.package]
 zed = { codegen-units = 16 }
@@ -1100,3 +1104,4 @@ ignored = [
 # this workspace on purpose.
 [workspace.metadata.dylint]
 libraries = [{ path = "tooling/lints" }]
+

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  GREETING: Hello, world!
+
+tasks:
+  default:
+    desc: Print a greeting message
+    cmds:
+      - task --list
+  prod:
+    desc: Build for myself
+    env:
+       RUSTFLAGS: "-C target-cpu=native"
+    cmds:
+      - cargo build --release
+      - mv /tmp/.cargo/target/release/zed /opt/bin/
